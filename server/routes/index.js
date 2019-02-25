@@ -22,7 +22,9 @@ let User = userModel.User;
 router.get('/', (req, res, next) => {
   res.render('content/index', {
     title: 'Home',
-    books: ''
+    books: '',
+    displayName: req.user ? req.user.displayName : '',
+    username: req.user ? req.user.username : ""
    });
 });
 /* GET - display the Login Page */

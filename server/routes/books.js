@@ -18,7 +18,7 @@ let book = require('../models/books');
 function requireAuth(req, res, next){
   //check if the user is logged in
   console.log(req.user);
-  if(!req.isAuthenticated() || (req.user.username != "admin")){
+  if(!req.isAuthenticated()){
     return res.redirect('/login');
   }
   next();

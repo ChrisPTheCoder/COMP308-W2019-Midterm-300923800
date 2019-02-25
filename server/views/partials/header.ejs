@@ -33,6 +33,7 @@
           <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
         <% } %>
 
+        <% if(typeof displayName == 'string' && displayName){ %>
           <% if(title == "books") { %>
           <li class="active"><a href="/books"><i class="fa fa-book fa-lg">
           </i> Books List</a></li>
@@ -40,6 +41,8 @@
             <li><a href="/books"><i class="fa fa-book fa-lg">
             </i> Books List</a></li>
           <% } %>
+          <% } %>
+
           <!--  Login / Register page-->
           <% if(typeof displayName == 'string' && displayName){ %>
           <li class="navbar-text"><i class="fa fa-lg fa-user"></i>
