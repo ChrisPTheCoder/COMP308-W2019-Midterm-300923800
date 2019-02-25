@@ -69,7 +69,8 @@ router.get('/register', (req, res, next) => {
     res.render('auth/register', {
         title: 'Register',
         messages: req.flash("registerMessage"),
-        displayName: req.user ? req.user.displayName : ''
+        displayName: req.user ? req.user.displayName : '',
+        username: req.user ? req.user.username : ""
     });
   }else{
     return res.redirect('/');
@@ -97,7 +98,8 @@ User.register(
           return res.render('auth/register', {
               title: 'Register',
               messages: req.flash("registerMessage"),
-              displayName: req.user ? req.user.displayName : ''
+              displayName: req.user ? req.user.displayName : '',
+              username: req.user ? req.user.username : ""
           });
       }else{
           // if no error exists, then registration is successful

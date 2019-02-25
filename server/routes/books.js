@@ -9,6 +9,7 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
+let passport = require('passport');
 
 // define the book model
 let book = require('../models/books');
@@ -33,7 +34,9 @@ router.get('/', requireAuth, (req, res, next) => {
     else {
       res.render('books/index', {
         title: 'Books',
-        books: books
+        books: books,
+        displayName: req.user ? req.user.displayName : '',
+        username: req.user ? req.user.username : "" 
       });
     }
   });
@@ -44,7 +47,9 @@ router.get('/', requireAuth, (req, res, next) => {
 router.get('/add', requireAuth, (req, res, next) => {
 
   res.render('books/details',{
-    title: 'Add A New Book'
+    title: 'Add A New Book',
+    displayName: req.user ? req.user.displayName : '',
+      username: req.user ? req.user.username : ""
   })
 
 });
@@ -83,7 +88,9 @@ router.get('/:id', requireAuth, (req, res, next) => {
       //show the edit view
       res.render('books/details',{
         title: 'Edit Book',
-        books: bookObject
+        books: bookObject,
+        displayName: req.user ? req.user.displayName : '',
+        username: req.user ? req.user.username : ""
       });
     }
   })
